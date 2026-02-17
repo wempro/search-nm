@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{meta_data.seoTitle}}</title> 
+<meta name="description" content="{{meta_data.metaDescription}}">
+
+<link rel="canonical" href="/{{meta_data.canonicalUrl}}">
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="/static/css/product.css"/>
+
+<style>
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Oswald', Arial, sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    h1 {
+        width: 100%;
+    }
+
+    .product-page {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* provide by Mr. Omar Faruk  */
+
+    .canvas-area {
+        width: 40%;
+        margin-right: 40px;
+        text-align:center;
+    }
+
+    .main-img img {
+        max-width:400px;
+        width: 100%;
+    }
+
+    .product-page .info {
+        width: calc(60% - 40px);
+    }
+    .product-page  .compunent  { 
+        padding:8px 0;
+
+    }
+ 
+ 
+
+    .cart-btn .add-to-cart-btn {
+        background: black;
+        border-radius: 8px;
+        padding: 12px 36px;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .short-desc {
+        font-size: 16px;
+        font-family: sans-serif;
+        color: #333333;
+        letter-spacing: 1px;
+        line-height: 26px;
+    }
+
+   
+
+    .tabs {
+        margin-top: 20px;
+        display: flex;
+        padding: 0px 24px;
+        width: 100%;
+    }
+
+    .tab-button {
+        background: #ccc;
+        border-radius: 8px 8px 0 0;
+        padding: 12px 40px;
+        cursor: pointer;
+        margin-right: 12px;
+    }
+
+    .tab-content {
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 1px;
+        color: #333333;
+
+        display: none;
+        width: 100%;
+        padding: 20px;
+        margin: 0 24px;
+
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 0 0 8px 8px;
+
+        
+    }
+       .tab-content table {
+        width: 100%;
+        border-collapse: collapse;
+       }
+
+    .tab-button.active {
+        background: black;
+        color: white;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+    #product-attribute-specs-table th {
+        font-size: 14px !important;
+        color: #333333 !important;
+    }
+    .title {font-size: 24px; 
+        letter-spacing: 3px;}
+    .product-code {
+        font-family: sans-serif;
+    }
+    .product-price {
+        font-size: 24px;
+    }
+    .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .parts-list {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20%;
+        padding: 10px;
+    }
+    .parts-list .product {
+        background-color: #f1f1f1;
+        border: 1px solid black;
+        padding: 10px;
+        font-size: 30px;
+        text-align: center;
+        img {
+            max-width: 100%;
+         }
+        * {
+            font-size: 14px;
+        }
+        
+    }
+
+
+</style> 
+{% endblock %}
+{% block script %}
+<script>console.log('rr-----')</script> {% endblock %}
+
+
+{% block content %}
+
+
+<div class="product-page">
+ {% include 'breadcrumb.html' with breadcrumb=breadcrumb  %} 
+
+
+   
+    <div class="canvas-area">
+        <div class="main-img">
+            <img src="{{ data.productImage }}" >
+        </div>
+    </div>
+
+    <div class="info">
+        <h1 class="title">{{ data.productTitle }}</h1>
+        <div class="compunent product-code">
+            <span class="lavel">SKU:</span>
+            <span class="value npm">{{ data.productID }}</span>
+        </div>
+
+       
+
+        {%if  data.seriesID %}
+        <div class="compunent product-model">
+            <span class="lavel">Model Number:</span>
+            <span class="value npm">{{ data.seriesID }}</span>
+        </div>
+        {% endif %}
+        <div class="compunent product-price">
+            {% comment %} <span class="lavel">Price:</span> {% endcomment %}
+            
+            <span class="value price">${{ data.price}}</span>
+            {% comment %} <span class="value price">{{ data.price}}</span> {% endcomment %}
+        </div>
+         <h3 class="short-desc">{{ data.shortDescription }}</h3>
+ <div class="where-to-buy">
+					<div class="section-title">WHERE TO BUY? </div>
+					<span class="where-to-buy-logo">
+						<a href="{{data.esUrl}}"> <img src="/static/images/element-smal-logo.jpg" alt=""></a>
+					</span> &nbsp;
+					<span class="where-to-buy-logo">
+						<a href="{{data.pniUrl}}"> <img src="/static/images/p-and-i-logo.jpg" alt=""></a>
+					</span>
+				</div>
+
+
+        {% comment %} <div class="cart-btn">
+            <a class="add-to-cart-btn" href="https://www.pumpsandinstrumentations.com/cart/add2cart/666053-344"> add to cart</a>  </div> {% endcomment %}
+             
+           
+      
+    </div>
+
+
+<div class="tabs">
+{% if data.description %}
+<div class="tab-button active" onclick="openTab('overview')">Overview</div>
+{% endif %}
+{% if  data.additional2 %}
+  <div class="tab-button" onclick="openTab('tab3')">Specification</div>
+{% endif %}
+{% if  data.additional1 %}
+   <div class="tab-button" onclick="openTab('tab2')">Documents</div>
+{% endif %}
+{% if  data.additional3 %}
+  <div class="tab-button" onclick="openTab('tab4')">Parts / Accessories / Kits </div>
+{% endif %}
+{% if data.tabData %}
+  <div class="tab-button" onclick="openTab('tab5')">Additional Data</div>
+{% endif %}
+    
+</div>
+{% if data.description %}
+<div class="tab-content active" id="overview">{{ data.description|safe }} </div>
+{% endif %}
+{% if data.additional2 %}
+ <div class="tab-content " id="tab3">{{ data.additional2|safe  }}</div>
+{% endif %}
+{% if data.additional1 %}
+ <div class="tab-content " id="tab2">{{ data.additional1|safe  }}</div>
+{% endif %}
+{% if  data.additional3 %}
+ <div class="tab-content " id="tab4"> 
+    <div class="parts-list">
+        {% for product in data.additional3 %} 
+        
+          <div class="product" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <div class="photo">
+            <a href="/{{ product.searchUrl }}" class="url">
+                {% comment %} <img itemprop="image" alt="{{ product.productTitle }}" src="/static/media/icon.png"> {% endcomment %}
+                <img itemprop="image" alt="{{ product.productTitle }}" src="{{ product.productImage }}">
+            </a>
+
+        </div>
+        <div class="content">
+             <a href="{{ product.searchUrl }}" >{{ product.productTitle }}</a> 
+     
+           
+            <p itemprop="description" class="description"> {{ product.shortDescription }}</p>
+               <div ><strong> Price: </strong> {{ product.price }}  </div>
+               
+                {% comment %} <a href="/{{product.searchUrl}}" class="btn btn-default"> Details </a>  {% endcomment %}
+            </div> 
+         
+        
+        <meta itemprop="position" content="{{ product.id }}">
+    </div>
+
+    {% empty %}
+        <div class="results-empty">No results found. </div>
+    {% endfor %}
+    </div>
+ </div>
+{% endif %}
+{% if data.tabData %}
+<div class="tab-content " id="tab5">{{ data.tabData|safe  }} </div>
+{% endif %}
+
+  
+ 
+</div>
+<script>
+    function openTab(tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.classList.add("active");
+    }
+
+    // Set the "Overview" tab as active by default
+    {% comment %} openTab('overview'); {% endcomment %}
+</script>
+{% endblock %}
+
+ 

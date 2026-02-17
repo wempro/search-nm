@@ -1,0 +1,120 @@
+.event-sec {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.title p {
+  color: #141613;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.loader {
+  width: 33.3333%;
+  float: left;
+  padding: 0 20px;
+  min-height: 550px;
+}
+
+.event-box {
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: #d5d2d2;
+  box-shadow: 0 1px 1px #ccc;
+  margin-bottom: 20px;
+  float: left;
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+}
+
+.box-event.last {
+  margin-right: 0;
+}
+
+.totop {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+}
+
+.totop a {
+  display: none;
+}
+
+#loadMore {
+  padding: 7px 20px;
+  text-align: center;
+  background-color: #50b848;
+  color: #fff;
+  transition: all 600ms ease-in-out;
+  -webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+#loadMore:hover {
+  background-color: #000;
+  color: #50b848;
+}
+
+.events-list {
+  float: left;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.box-event img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  height: auto;
+}
+
+.event-date {
+  background: #50b848 none repeat scroll 0 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 2px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.box-event h1 {
+  color: #1e2020;
+  font-size: 23px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.box-event p {
+
+  padding: 0 15px;
+  text-align: center;
+  color: #545554;
+}
+
+.event-read {
+  text-align: center;
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.read-btn.evt {
+  float: none;
+  font-size: 14px;
+}
+
+.evt-load {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}

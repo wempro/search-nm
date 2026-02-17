@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+<title>{{meta_data.seoTitle}}</title> 
+<meta name="description" content="{{meta_data.metaDescription}}">
+
+<link rel="canonical" href="/{{meta_data.canonicalUrl}}">
+ 
+{% endblock %}
+{% block style %}
+<style>
+{{css| safe }}
+</style>
+ {% endblock %}
+{% block script %}
+<script> {
+    {
+        js | safe
+    }
+}</script> {% endblock %}
+
+{% block slide %}
+ {% include 'home-slide.html' with carouselSlide=carouselSlide  %} 
+{%endblock%}
+
+{% block content %}
+
+{% comment %} {% for item in products %}
+productTitle: {{item.productTitle}} ||  productID:{{item.productID}}
+<hr>
+{%endfor%} {% endcomment %}
+
+{% comment %} {% if product.in_stock %}
+
+{% for item in categoryData %}
+categoryTitle : {{item.categoryTitle}} ||  textId : {{item.textId }} ||  breadcrumbTitle : {{item.breadcrumbTitle }}
+<hr>
+{%endfor%}
+{% endif %} {% endcomment %}
+
+
+  {% if topContent %}
+  <div class="top-content" style="padding:20px;"> 
+ {{ topContent| safe }}
+  </div>
+  
+{% endif %}  
+
+
+
+ 
+
+{% for item in homePageContent %}
+    <div class="section-content">
+        <h2>{{ item.sectionTitle }} </h2>
+        <div>{{ item.bodyContent|safe }} </div>
+    </div>
+{% endfor %}
+
+
+ 
+
+ 
+ 
+ {% if categoryData %}
+     <h3 class="title"> Micro Pumps Categories  </h3>
+<div class="product-list category-data-area">
+
+ {% for item in categoryData %}
+ 
+  <div class="product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+       
+          
+        {%if item.img %}
+        <a itemprop="url" href="/category/{{ item.textId }}" class="photo">
+          <img itemprop="image" src={{item.img}} alt={{item.title}} title={{item.title}}>
+        </a>
+        {%endif%}
+        
+        <h2 itemprop="name" class="title">
+            <a itemprop="url" href="/category/{{ item.textId }}" class="url" title={{item.title}} > {{item.title}} </a>
+            {% comment %} <a itemprop="url" href="/category/{{ item.url|default:item.textId }}" class="url" title={{item.title}} > {{item.title}} </a> {% endcomment %}
+        </h2>
+        <p itemprop="description" class="description">{{item.sub_title|safe}}</p>
+        {% comment %} <p class="sig-short-desc">{{description|safe}}</p> {% endcomment %}
+        {% comment %} <ul class="item">
+            <li><a itemprop="url" href="chlorine-analyzer.php">4630 Chlorine Analyzer System</a></li>
+            <li><a itemprop="url" href="4632-chlorine-dioxide-analyzer-system.php">4632 Chlorine Dioxide Analyzer
+                System</a></li>
+            <li><a itemprop="url" href="">2630 Amperometric Free Chlorine Electrode</a></li>
+        </ul>
+        <meta itemprop="position" content="11"> {% endcomment %}
+         <a itemprop="url" href="/category/{{ item.textId }}" class="more" title={{item.title}} > More Details</a>
+    </div>
+    {%endfor%}
+ 
+    </div>
+{% endif %}
+
+
+ {% if series_list %}
+     <h3 class="title">Micro Pumps Popular Series </h3>
+<div class="product-list series-area">
+
+ {% for item in series_list %}
+ 
+  <div class="product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+         
+        {%if item.img %}<a itemprop="url" href="/category/{{ item.textId }}" class="photo">
+          <img itemprop="image" src={{item.img}} alt={{item.title}} title={{item.title}}></a>{%endif%}
+          <h2 itemprop="name" class="title">
+            <a itemprop="url" href="/category/{{ item.textId }}" class="url" title={{item.title}} > {{item.title}} </a></h2>
+        <p itemprop="description" class="description">{{item.details|safe}}</p>
+        <a itemprop="url" href="/category/{{ item.textId }}" class="more" title={{item.title}} > More Details</a>
+        {% comment %} <p class="sig-short-desc">{{description|safe}}</p> {% endcomment %}
+        {% comment %} <ul class="item">
+            <li><a itemprop="url" href="chlorine-analyzer.php">4630 Chlorine Analyzer System</a></li>
+            <li><a itemprop="url" href="4632-chlorine-dioxide-analyzer-system.php">4632 Chlorine Dioxide Analyzer
+                System</a></li>
+            <li><a itemprop="url" href="">2630 Amperometric Free Chlorine Electrode</a></li>
+        </ul>
+        <meta itemprop="position" content="11"> {% endcomment %}
+    </div>
+    {%endfor%}
+ 
+    </div>
+{% endif %}
+
+ 
+
+ {% if productData %}
+   <h3 class="title"> Most Popular  Micro Pumps and Drives</h3>
+    <div class="product-list product-data-area">
+
+        {% for item in productData %}  
+            <div class="product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                {%if item.productImage %}<a itemprop="url" href="/{{item.searchUrl}}" class="photo">
+                <img itemprop="image" src={{item.productImage}} alt={{item.productTitle}} title={{item.productTitle}}></a>{%endif%}
+                <h2 itemprop="name" class="title">
+                <a itemprop="url" href="{{item.searchUrl}}" class="url" title={{item.productTitle}} > {{item.productTitle}}  </a></h2>
+                <p itemprop="description" >{{item.shortDescription|safe}}</p>
+                <a itemprop="url" href="/{{ item.searchUrl }}" class="more" title={{item.productTitle}} > More Details</a>
+                {% comment %} <p class="sig-short-desc">{{description|safe}}</p> {% endcomment %}
+                {% comment %} <ul class="item">
+                    <li><a itemprop="url" href="chlorine-analyzer.php">4630 Chlorine Analyzer System</a></li>
+                    <li><a itemprop="url" href="4632-chlorine-dioxide-analyzer-system.php">4632 Chlorine Dioxide Analyzer
+                        System</a></li>
+                    <li><a itemprop="url" href="">2630 Amperometric Free Chlorine Electrode</a></li>
+                </ul>
+                <meta itemprop="position" content="11"> {% endcomment %}
+            </div>
+        {%endfor%}
+    
+        </div>
+    {% endif %} 
+
+    {% if additional %}
+        {{ additional|safe }}
+    {% endif %}
+
+
+{% endblock %}
+ 

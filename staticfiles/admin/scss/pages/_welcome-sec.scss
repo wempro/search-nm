@@ -1,0 +1,68 @@
+
+.welcome-sec {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.welcome-part {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.welcome-part h1 {
+  color: #444445;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.sem {
+  font-weight: 300;
+}
+
+.welcome-part p {
+  color: #4e4c4c;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: normal;
+}
+
+.about-part {
+  float: left;
+  width: 100%;
+}
+
+.about-text {
+  float: left;
+  margin-right: 0;
+  padding: 0 25px 0 0;
+  width: 50%;
+}
+
+.about-text h1 {
+  color: #006f65;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.about-part p {
+  color: #464545;
+  font-size: 16px;
+
+  margin-bottom: 10px;
+
+}
+
+.about-img {
+  float: left;
+  width: 50%;
+  img {
+    width: 100%;
+  }
+}
+

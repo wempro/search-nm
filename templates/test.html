@@ -1,0 +1,105 @@
+ <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+  <div class="scv-product-upload">
+    
+   <input type="file" name="csv_file" id="csv_file">  
+  <input type="submit" value="Submit " name="submit">
+ 
+    </div>
+</form>  
+
+<form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    {% comment %} {{ form }} {% endcomment %}
+                    <button type="submit">Upload CSV</button>
+                </form>
+
+                   # data_set = csv_file.read().decode('UTF-8')
+            # io_string = io.StringIO(data_set)
+            # next(io_string) 
+            # for columns in csv.reader(io_string, delimiter=',', quotechar="|"):
+            #     for data in columns:
+            #         if data:
+
+        #                 print("333", data)  
+        #         created = Products.objects.update_or_create(
+        #             id=column[0],
+        #             productID=column[1],
+        #             productTitle=column[2],
+        #             seriesID=column[3],
+        #             description=column[4],
+        #             price=column[5],
+        #             productImage=image,
+        #             searchUrl=column[7],
+        #             shortDescription=column[8],
+        #             additional1=column[9],
+        #             additional2=column[10],
+        #             additional3=column[11],
+        #             esUrl=column[12],
+        #             pniUrl=column[13],
+        #             tabData=column[14]
+        # )
+
+            # csv_file = CSVUploadForm(request.POST, request.FILES)
+            # data_set = csv_file.read().decode
+            # data_set = csv_file.read()
+            # with open(csv_file, 'rt', encoding='utf-8') as csv_file:
+                # data_set = csv.DictReader(csv_file)
+            # csv_data = csv_file.cleaned_data['csv_file']
+            # data_set = csv.DictReader(csv_data)
+
+            # for row in data_set:
+            #     print("row")
+            #     Products.objects.create(
+            #     productID=row['productID'],
+            #     productTitle=row['productTitle'],
+            #     seriesID=row['seriesID'],
+            #     description=row['description'],
+            #     price=row['price'],
+            #     productImage=row['productImage'],
+            #     searchUrl=row['searchUrl'],
+            #     shortDescription=row['shortDescription'],
+            #     additional1=row['additional1'],
+            #     additional2=row['additional2'],
+            #     additional3=row['additional3'],
+            #     esUrl=row['esUrl'],
+            #     pniUrl=row['pniUrl'],
+            #     tabData=row['tabData']
+            #     )
+
+            # File.Objects.create(file=file)
+                
+            # form = CSVUploadForm(request.POST, request.FILES)
+            # if form.is_valid():
+                # csv_file = form.cleaned_data['csv_file']
+                # reader = csv.DictReader(csv_file)
+                # print('nurrrrrrrr')
+                # for row in reader:
+                #     print("row")
+                #     Products.objects.create(
+                #     productID=row['productID'],
+                #     productTitle=row['productTitle'],
+                #     # Add more fields as needed
+                #     )
+            
+    
+    # if request.user.is_authenticated:
+    #     return render(request, 'csv-upload.html') 
+    # else:
+    #     return redirect('home_page')
+
+     productID = xl["productID"][i], 
+                        productTitle  = xl["productTitle "][i], 
+                        seriesID  = xl["seriesID "][i], 
+                        description = xl["description"][i], 
+                        price = xl["price"][i], 
+                        productImage = xl["productImage"][i], 
+                        searchUrl  = xl["searchUrl "][i], 
+                        shortDescription = xl["shortDescription"][i], 
+                        additional1 = xl["additional1"][i], 
+                        additional2 = xl["additional2"][i], 
+                        additional3 = xl["additional3"][i], 
+                        esUrl = xl["esUrl"][i], 
+                        pniUrl = xl["pniUrl"][i], 
+                        tabData = xl["tabData"][i], 

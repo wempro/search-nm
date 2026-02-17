@@ -1,0 +1,36 @@
+@import "../base/base";
+@import "../base/reset";
+
+.logo {
+  width: 100%;
+  text-align: center;
+  padding: 55px;
+}
+.logo img {
+  max-width: 100%;
+  width: 110px;
+}
+
+body {
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(33, 35, 50, 1);
+  margin: 0;
+  padding: 0;
+}
+.wrap {
+  width: calc(100% - 322px);
+  opacity: 1;
+  position: relative;
+  padding: 30px;
+}
+
+@import "left-side-bar";
+@import "header";
+// @import "menu";
+// @import "menu-icon";
+// @import "footer";
+
+@import "../component/block";
+@import "../component/table";

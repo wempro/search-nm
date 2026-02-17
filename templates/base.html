@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+  {% block title %}{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link href='https://fonts.googleapis.com/css?family=Anek Bangla' rel='stylesheet'>
+   
+        
+    {% if request.path != '/' %}
+      <link rel="stylesheet" href="/static/css/sub-page.css"/> 
+    {% else %}
+    <link rel="stylesheet" href="/static/css/home.css"/> 
+    {% endif %}
+    <style>
+      .admin-nav {
+    display: flex;
+    margin: 29px auto;
+}
+.admin-nav a, .admin-nav a:hover {
+    color: white;
+    font-size: 14px;
+    margin-right: 15px;
+    text-decoration: none;
+}
+</style>
+
+    {% block style %} {% endblock %}
+
+    
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W5HJJXZ');</script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            {% comment %} <script src="/static/js/custom.js"></script> {% endcomment %}
+ 
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+          {% comment %} {% block script %} {% endblock %} {% endcomment %}
+  </head>
+    
+  <body>
+    {% include 'header.html' %}
+   
+
+    <div class="main-content">
+        {% comment %} {% if request.path == '/' %}
+          {% include 'home-slide.html' %} 
+        {% endif %} {% endcomment %}
+         {% block slide %} {% endblock %} 
+
+        
+
+      {% comment %} {% if sidebar != False and request.path != '/' %}
+               
+      {% endif %} {% endcomment %}
+      {% block sidebar %} {% endblock %} 
+            
+            
+        {% block content %} {% endblock %} 
+    </div>
+    {% include 'footer.html' %}
+
+      {% block script %} {% endblock %}
+
+    <script type="application/ld+json">
+      {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://diaphragmpumpstore.com",
+      "logo": "https://diaphragmpumpstore.com/static/images/logo.jpg","contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+1 877 704 0346",
+        "contactType": "customer service"
+        }]}
+  </script>
+</body>
+</html>
+
+

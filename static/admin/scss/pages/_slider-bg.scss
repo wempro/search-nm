@@ -1,0 +1,76 @@
+.slider-bg {
+  /*background-image: url(../images/banner1.jpg);*/
+  float: left;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 470px;
+  background-position: 50% 50%;
+  position: relative;
+}
+.slider-bg{
+  background-image: url(../images/banner11.jpg);
+}
+.slider-content {
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
+  left: 0px;
+}
+
+.slider-content h1 {
+  font-size: 48px;
+  color: #fff;
+  font-weight: 500;
+  line-height: 50px;
+}
+
+.green {
+  color: #50b848;
+}
+
+.slider-content p {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 300;
+  margin: 15px 0;
+  display: inline-block;
+  line-height: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.slider-content h2 {
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+  text-transform: uppercase;
+  text-align: center;
+  margin:0px auto;
+  max-width: 800px;
+  width: 90%;
+  span {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
+.read-btn {
+  background: #50b848;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 30px;
+  float: none;
+  display: inline-block;
+
+  text-transform: uppercase;
+}
+
+.read-btn:hover {
+  background: #000;
+  color: #50b848;
+}

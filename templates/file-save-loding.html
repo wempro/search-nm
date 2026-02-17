@@ -1,0 +1,58 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% block title %} <title>Loading...</title> {% endblock %}
+{% block style %}
+<style> 
+     body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #020617, #0f172a);
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .container {
+        text-align: center;
+        color: #fff;
+    }
+
+    .spinner {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: conic-gradient(#38bdf8, #6366f1, #38bdf8);
+        animation: spin 1.2s linear infinite;
+        mask: radial-gradient(circle 28px, transparent 98%, #000 100%);
+        -webkit-mask: radial-gradient(circle 28px, transparent 98%, #000 100%);
+        margin: auto;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    .text {
+        margin-top: 16px;
+        font-size: 15px;
+        letter-spacing: .5px;
+        opacity: .85;
+    }
+ 
+</style>{% endblock %}
+{% block script %}
+<script>console.log('nur-----')</script> {% endblock %}
+
+
+{% block content %} 
+ 
+
+<div class="container">
+    <div class="spinner"></div>
+    <div class="text">Loading, please wait...</div>
+</div>
+ 
+
+{% endblock %}
+
+ 

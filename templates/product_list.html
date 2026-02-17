@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{meta_data.seoTitle}}</title> 
+<meta name="description" content="{{meta_data.metaDescription}}">
+
+<link rel="canonical" href="/{{meta_data.canonicalUrl}}">
+{% endblock %}
+
+{% block style %}
+        <style>
+            h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', Arial, sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        h1 {
+            width:100%;
+        }
+
+
+        /* Custome css */
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.428571429;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .product a.btn-default {
+            background: linear-gradient(#35aa51, #8fcb9d);
+            background-color: #8fcb9d;
+            color: #fff;
+            padding: 7px 12px;
+            margin-top:8px;
+        }
+        .product .title {
+            width: 100%;
+        }
+        .product .content {
+            float:none;
+            display:block;
+        }
+        .breadcrumb .query {
+            font-weight: bold;
+        }
+        .breadcrumb .query:after, .breadcrumb .query:before {
+        content: '"';
+        font-weight: normal;
+        }
+        .search-page {
+            width: calc(100% - 270px)
+
+        }
+        
+        </style>
+{% endblock %}
+{% block script %}
+<script>console.log('nur-----')</script> {% endblock %}
+{% block sidebar %} {% include 'sidebar.html' with breadcrumb=breadcrumb  %} {% endblock %}
+
+{% comment %} {% load load_data %} {% endcomment %}
+
+
+{% block content %}
+<div class="search-page">
+ {% include 'breadcrumb.html' with breadcrumb=breadcrumb  %} 
+
+ 
+
+{% comment %} 
+{% for item in navRoot_load|navRoot %}
+   <p> {{item.categoryTitle}} => {{item.parrentCategory}} || {{sub.textId}}</p>
+   {% for sub in navFirstChild_load|navFirstChild:item.textId %}
+        <p> {{sub.categoryTitle}} ==> {{sub.textId}}</p>
+    {%endfor%}
+{%endfor%} {% endcomment %}
+
+
+ 
+{% comment %} <p>The value 5 doubled is {{ 5 | my_filter }}.</p> {% endcomment %}
+
+ 
+{% comment %} {%results%} {% endcomment %}
+    {%if items|length != 0%}
+    <div class="category-list">
+        <h2> Category List </h2>
+        {% for category in category_list %} 
+            <a href="/category/{{ category.url|default:category.textId }}" class="url">{{ category.title }}</a> |
+        {% endfor %}
+    </div> 
+    {% else %} 
+    
+        {% for category in category_list %} 
+            <div class="product" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <div class="photo">
+                    <a href="/category/{{ category.url|default:category.textId }}" class="url">
+                        {% comment %} <img itemprop="image" alt="{{ category.title }}" src="/static/media/icon.png"> {% endcomment %}
+                        
+                            {% if category.img %}
+                                <img itemprop="image" alt="{{ category.title }}" src="{{ category.img }}">
+                            {% else %}
+                                <img itemprop="image" alt="{{ category.title }}" src="/media/category/brand-logo.jpg">
+                            {% endif %}
+                        
+                    </a>
+
+                </div>
+                <div class="content">
+                    <h2 class="title"><a href="/category/{{ category.url|default:category.textId }}" class="url">{{ category.title }}</a></h2>
+            
+                    {% if category.sub_title %}
+                    <p itemprop="description" class="sub-title"> {{ category.sub_title }}</p>
+                    {% else %}
+                    <p itemprop="description" class="description"> {{ category.details|safe }}</p>
+                    {% endif %} <br/>
+                    
+                        <a href="/category/{{ category.url|default:category.textId }}" class="btn btn-default"> Details </a> 
+                    </div> 
+                
+                
+                <meta itemprop="position" content="{{ category.id }}">
+            </div>
+            
+            
+
+    
+        {% endfor %}
+    {%endif%}
+
+    {% for product in items %} 
+        
+          <div class="product" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <div class="photo">
+            <a href="/{{ product.searchUrl }}" class="url">
+                {% comment %} <img itemprop="image" alt="{{ product.productTitle }}" src="/static/media/icon.png"> {% endcomment %}
+                <img itemprop="image" alt="{{ product.productTitle }}" src="{{ product.productImage }}">
+            </a>
+
+        </div>
+        <div class="content">
+            <h2 class="title"><a href="{{ product.searchUrl }}" class="url">{{ product.productTitle }}</a></h2>
+     
+           
+            <p itemprop="description" class="description"> {{ product.shortDescription }}</p>
+               <div class='price'><strong> Price: </strong> {{ product.price }}  </div>
+               
+                <a href="/{{product.searchUrl}}" class="btn btn-default"> Details </a> 
+            </div> 
+         
+        
+        <meta itemprop="position" content="{{ product.id }}">
+    </div>
+
+    {% empty %}
+        {%if category_list|length == 0%}
+            <div class="results-empty">No results found. </div>
+        {%endif%}
+    {% endfor %}
+    
+
+        <!-- Debug pagination info -->
+    {% comment %} <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; font-size: 12px;">
+        <strong>Debug Info:</strong><br>
+        Total items: {{ items.paginator.count }}<br>
+        Items per page: {{ items.paginator.per_page }}<br>
+        Total pages: {{ items.paginator.num_pages }}<br>
+        Current page: {{ items.number }}<br>
+        Has other pages: {{ items.has_other_pages }}<br>
+        Has previous: {{ items.has_previous }}<br>
+        Has next: {{ items.has_next }}
+    </div> {% endcomment %}
+
+ 
+    
+    
+ <!-- Display pagination controls -->
+{% if items.paginator.num_pages > 1 %}
+{% include 'pager.html' with items=items  %} 
+{% endif %}
+
+
+ 
+</div>
+{% endblock %}
+
+ 

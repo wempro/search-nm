@@ -1,0 +1,395 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F5F5F5;
+  font-family: "Lato", sans-serif;
+  color: #000000;
+  border-top: solid 1px #ffffff;
+  margin-top: -1px;
+}
+
+h1 {
+  font-size: 48px;
+  font-family: "Poppins", sans-serif;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.6em;
+}
+
+h5 {
+  font-size: 1.4em;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: "Lato", sans-serif;
+  color: #464545;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-height: 100%;
+  height: auto;
+  border: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  width: 95%;
+}
+
+.logo {
+  width: 100%;
+  text-align: center;
+  padding: 55px;
+}
+
+.logo img {
+  max-width: 100%;
+  width: 110px;
+}
+
+body {
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  background: rgb(33, 35, 50);
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  width: calc(100% - 322px);
+  opacity: 1;
+  position: relative;
+  padding: 30px;
+}
+
+/*  ************************************   .left-side-bar *************************/
+.left-side-bar {
+  width: 322px;
+  height: 1024px;
+  background: rgb(42, 45, 62);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  border: solid 1px;
+}
+.left-side-bar .item {
+  padding: 15px 20px;
+  margin: 0px 26px;
+  display: flex;
+  align-items: center;
+}
+.left-side-bar .item.selecetd, .left-side-bar .item:hover {
+  background: rgb(50, 53, 70);
+}
+.left-side-bar .icon {
+  margin-right: 25px;
+}
+.left-side-bar .icon img {
+  width: 20px;
+}
+.left-side-bar .item-name {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-weight: Medium;
+  font-size: 18px;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+.header-section .page-title {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-weight: Semi Bold;
+  font-size: 28px;
+}
+.header-section .profile-ds {
+  width: 250px;
+  height: 55px;
+  background: rgb(42, 45, 62);
+  opacity: 1;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border-radius: 12px;
+}
+.header-section .profile-icon {
+  width: 45px;
+  height: 45px;
+  background: url(../images/v15_504.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+}
+.header-section .item {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+.header-section .label {
+  width: 100px;
+  color: rgb(255, 255, 255);
+  font-weight: Medium;
+  font-size: 16px;
+}
+.header-section .arraw-down {
+  width: 24px;
+  height: 24px;
+  background: rgb(255, 255, 255);
+}
+
+.content-block {
+  padding: 20px 0;
+}
+
+.block {
+  width: 100%;
+  background: rgb(42, 45, 62);
+  min-height: 50px;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+table {
+  color: #fff;
+  width: 100%;
+}
+table td,
+table th {
+  border-bottom: solid 1px #3d4050;
+}
+table td {
+  padding: 20px 15px;
+}
+table th {
+  font-weight: bold;
+  padding: 15px;
+  text-align: left;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F5F5F5;
+  font-family: "Lato", sans-serif;
+  color: #000000;
+  border-top: solid 1px #ffffff;
+  margin-top: -1px;
+}
+
+h1 {
+  font-size: 48px;
+  font-family: "Poppins", sans-serif;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.6em;
+}
+
+h5 {
+  font-size: 1.4em;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: "Lato", sans-serif;
+  color: #464545;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-height: 100%;
+  height: auto;
+  border: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  width: 95%;
+}
+
+.logo {
+  width: 100%;
+  text-align: center;
+  padding: 55px;
+}
+
+.logo img {
+  max-width: 100%;
+  width: 110px;
+}
+
+body {
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  background: rgb(33, 35, 50);
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  width: calc(100% - 322px);
+  opacity: 1;
+  position: relative;
+  padding: 30px;
+}
+
+/*  ************************************   .left-side-bar *************************/
+.left-side-bar {
+  width: 322px;
+  height: 1024px;
+  background: rgb(42, 45, 62);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  border: solid 1px;
+}
+.left-side-bar .item {
+  padding: 15px 20px;
+  margin: 0px 26px;
+  display: flex;
+  align-items: center;
+}
+.left-side-bar .item.selecetd, .left-side-bar .item:hover {
+  background: rgb(50, 53, 70);
+}
+.left-side-bar .icon {
+  margin-right: 25px;
+}
+.left-side-bar .icon img {
+  width: 20px;
+}
+.left-side-bar .item-name {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-weight: Medium;
+  font-size: 18px;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+.header-section .page-title {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-weight: Semi Bold;
+  font-size: 28px;
+}
+.header-section .profile-ds {
+  width: 250px;
+  height: 55px;
+  background: rgb(42, 45, 62);
+  opacity: 1;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border-radius: 12px;
+}
+.header-section .profile-icon {
+  width: 45px;
+  height: 45px;
+  background: url(../images/v15_504.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+}
+.header-section .item {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+.header-section .label {
+  width: 100px;
+  color: rgb(255, 255, 255);
+  font-weight: Medium;
+  font-size: 16px;
+}
+.header-section .arraw-down {
+  width: 24px;
+  height: 24px;
+  background: rgb(255, 255, 255);
+}
+
+.content-block {
+  padding: 20px 0;
+}
+
+.block {
+  width: 100%;
+  background: rgb(42, 45, 62);
+  min-height: 50px;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+table {
+  color: #fff;
+  width: 100%;
+}
+table td,
+table th {
+  border-bottom: solid 1px #3d4050;
+}
+table td {
+  padding: 20px 15px;
+}
+table th {
+  font-weight: bold;
+  padding: 15px;
+  text-align: left;
+}
+
+.nur {
+  color: #f00;
+}/*# sourceMappingURL=style.min.css.map */

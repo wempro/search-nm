@@ -1,0 +1,36 @@
+/*  ************************************   .left-side-bar *************************/
+
+.left-side-bar {
+  width: 322px;
+  height: 1024px;
+  background: rgba(42, 45, 62, 1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  border: solid 1px;
+
+  .item {
+    padding: 15px 20px;
+    margin: 0px 26px;
+    display: flex;
+    align-items: center;
+    &.selecetd,
+    &:hover {
+      background: rgba(50, 53, 70, 1);
+    }
+  }
+  .icon {
+    margin-right: 25px;
+    img {
+      width: 20px;
+    }
+  }
+  .item-name {
+    color: rgba(255, 255, 255, 1);
+    font-family: Inter;
+    font-weight: Medium;
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,49 @@
+{% load data_load %}
+{% comment %} {% load category_custom_tags %} {% endcomment %}
+
+{% block sidebar %} 
+<div class="view-mobile index-tab">
+
+<div class="select-category by-category">
+<span class="tab-title1"> Product Categories </span>
+
+<ul class="nagigation-bar l1">
+{% for item in navRoot_load|navRoot:'root' %}
+ 
+    <li class="{% if breadcrumb.0.name == item.url %} active-nav {% endif %}{% if navRoot_load|navRoot:item.textId|length > 0%} has-child {%endif%}" ><a href="/category/{{item.url}}">{{item.title}}</a>
+    {% comment %} <li class="{% if request.path == '/category/'|add:breadcrumb.0.name %} active-nav {% endif %}{% if navRoot_load|navRoot:item.textId|length > 0%} has-child {%endif%}" ><a href="/category/{{item.url}}">{{item.title}}</a> {% endcomment %}
+        {%if navRoot_load|navRoot:item.textId|length > 0%} 
+        <ul class="l2">
+        {% for sub in navRoot_load|navRoot:item.textId %}
+            <li class="{% if breadcrumb.1.name ==  sub.url %}active-nav{% endif %}{% if navRoot_load|navRoot:sub.textId|length > 0%} has-child {%endif%}"><a href="/category/{{sub.url}}">{{sub.title}}  </a>
+            {% comment %} <li class="{% if request.path == '/category/'|add:breadcrumb.1.name %}active-nav{% endif %}{% if navRoot_load|navRoot:sub.textId|length > 0%} has-child {%endif%}"><a href="/category/{{sub.url}}">{{sub.title}}  </a> {% endcomment %}
+                {%if navRoot_load|navRoot:sub.textId|length > 0%} 
+                <ul class="l3">
+                    {% for sub2 in navRoot_load|navRoot:sub.textId %}
+                        {% comment %} <li class="{% if request.path == '/category/'|add:sub2.url %} active-nav{% endif %}"><a href="/category/{{sub2.url}}">{{sub2.title}}  </a></li> {% endcomment %}
+                        <li class="{% if breadcrumb.2.name == sub2.url %} active-nav{% endif %}"><a href="/category/{{sub2.url}}">{{sub2.title}}  </a></li>
+                    {%endfor%}
+                </ul>
+                {%endif%}
+            </li>
+        {%endfor%}
+        </ul>
+        {%endif%}
+    </li>
+{%endfor%}
+</ul>
+
+{% comment %} <ul class="category-list l1">
+<li><a href="gf-signet-flow-sensors">Flow Sensors</a></li>
+<li><a href="ph-orp-sensors">ph-ORP Sensors &amp; Electrodes</a></li>
+<li><a href="flow-instruments">Flow Monitor Controller / Transmitter</a></li>
+<li><a href="conductivity-resistivity-electrode">Conductivity Resistivity Sensors</a></li>
+<li><a href="ultrasonic-flow">Ultrasonic Flow</a></li>
+<li><a href="level-sensor">Level Sensor</a></li>
+<li><a href="http://www.pumpsandinstrumentations.com/search/fittings?brands=2">Installation Fittings</a></li>
+</ul> {% endcomment %}
+</div>
+
+ 
+</div> 
+{% endblock %}

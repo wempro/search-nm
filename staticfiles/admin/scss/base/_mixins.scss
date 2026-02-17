@@ -1,0 +1,11 @@
+@mixin media($device) {
+  @media screen and (max-width: #{$device}px) {
+    @content;
+  }
+}
+
+@mixin mediaMin($device) {
+  @media screen and (min-width: #{$device + 1}px) {
+    @content;
+  }
+}

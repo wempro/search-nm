@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %} About || Wempro {% endblock %}
+{% block style %}
+ <link rel="stylesheet" href="/static/css/product.css"/> 
+ 
+<style>
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+h1 {
+    width:100%;
+}
+
+ 
+.product-page {
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+ 
+</style>{% endblock %}
+{% block script %}
+<script>console.log('rr-----')</script> {% endblock %}
+
+
+{% block content %} 
+
+
+ 
+
+<div class="product-page">
+    <div class="breadcrumb">
+<a href="/" class="home">Home</a> <b> » </b> Showing results for <span class="query">{{ breadcrumb }}</span>
+</div>
+
+    <div class="canvas-area"></div>
+    <div class="info">
+        <h1 class="title">ARO 637543-2-D, Solenoid Valve Block Kit for 2", 3" ARO Pumps</h1>
+        <div class="compunent product-code">
+            <span class="lavel">Product Code</span>
+            <span class="value npm">{{ data.productID }}</span>
+        </div>
+        <div class="compunent product-model">
+            <span class="lavel">Model Number</span>
+            <span class="value npm">{{ data.seriesID }}</span>
+        </div>
+        <div class="compunent product-price">
+            <span class="lavel">Price</span>
+            <span class="value npm">{{ data.seriesID }}</span>
+        </div>
+    </div>
+
+
+
+ 
+
+<ul>
+    
+         {% comment %} <li>{{ data.id }}</li> {% endcomment %}
+            <li><strong>Image:</strong><img src="{{ data.productImage }}" width='120'/></li>
+          <li><strong>Title: </strong>{{ data.productTitle }}</li>
+         <li><strong>Product ID: </strong>{{ data.productID}}</li>
+         <li><strong>Series Code: </strong>{{ data.seriesID }}</li>
+         <li><strong>Price: </strong>{{ data.Price }}</li>
+          <li> <br></li>
+         <li><strong>Short Description: </strong> {{ data.shortDescription }}</li>
+         
+<li> <br></li>
+         <li><strong>Description: </strong>{{ data.description }}</li>
+      <li> <br></li>
+         <li><strong>EsUrl: </strong>{{ data.esUrl }}</li>
+         <li><strong>PniUrl: </strong>{{ data.pniUrl }}</li>
+         {% comment %} <li><strong></strong>{{ data.TabData }}</li>
+         <li><strong></strong>{{ data.Additional1 }}</li>
+         <li><strong></strong>{{ data.Additional2 }}</li>
+         <li><strong></strong>{{ data.Additional3 }}</li>  {% endcomment %}
+
+    
+</ul>
+<div class="where-to-buy">
+                <div class="where-to-buy-txt">WHERE TO BUY?</div>
+					<span class="where-to-buy-logo">
+						<a href="{{ data.esUrl }}"> <img src="/static/images/element-smal-logo.jpg" alt=""></a>
+					</span>  
+					<span class="where-to-buy-logo">
+						<a href="{{ data.pniUrl }}"> <img src="/static/images/p-and-i-logo.jpg" alt=""></a>
+					</span>
+            </div>
+ </div>
+{% endblock %}
+
+ 

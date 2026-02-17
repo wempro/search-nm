@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+{% block title %} About || Wempro {% endblock %}
+{% block style %} <style>
+.scv-product-upload {
+       max-width: 500px;
+}
+.scv-product-upload label{ 
+    display: block;
+    max-width: 100%;
+
+    font-weight: 700;
+}
+
+.scv-product-upload input{ 
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+.dashboard {
+    width:100%;
+}
+.dashboard .container {
+    position: relative;
+    padding-top:60px;
+}
+.top-btn-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+ 
+</style>{% endblock %}
+ 
+
+{% block content %}
+
+  
+    <section class="dashboard">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center wow fadeInDown" data-wow-duration="2s" data-wow-delay="50ms">
+                        <h2>Product Upload Form by CSV FIle</h2>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {% if message %}
+                    {{message}}
+    {% endif %}
+                   
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="scv-product-upload">
+                            <input type="file" name="csv_file" id="csv_file2" accept=".xlsx">  
+                            <input type="submit" value="Submit " name="submit">
+                        </div>
+                    </form>  
+                </div>
+            </div>
+            {% include 'admin-search-bar.html' %} 
+        </div>
+
+          
+
+    </section>
+
+
+{% endblock %}
+

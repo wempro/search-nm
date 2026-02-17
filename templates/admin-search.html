@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title %} About || Wempro {% endblock %}
+{% block style %}
+<style>
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+h1 {
+    width:100%;
+}
+
+
+/* Custome css */
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.product a.btn-default {
+    background: linear-gradient(#35aa51, #8fcb9d);
+    background-color: #8fcb9d;
+    color: #fff;
+    padding: 7px 12px;
+    margin-top:8px;
+}
+.product .title {
+    width: 100%;
+}
+.product .content {
+    float:none;
+    display:block;
+}
+.breadcrumb .query {
+    font-weight: bold;
+}
+.breadcrumb .query:after, .breadcrumb .query:before {
+  content: '"';
+  font-weight: normal;
+}
+.search-results-btn-area {
+    text-align: right;
+}
+.btn-danger {
+    position:absolute;
+    bottom: 20px;
+    right: 20px;
+}
+ 
+</style>{% endblock %}
+{% block script %}
+<script>console.log('nur-----')</script> {% endblock %}
+
+
+{% block content %}
+<div class="search-page">
+ 
+  {% include 'admin-search-bar.html' %} 
+<div class="title-section">
+    <h1 class="title"> Showing results for "{{ aQuery }}":</h1></div>
+ 
+ 
+{% comment %} {%results%} {% endcomment %}
+<div class="search-results-btn-area">
+ <a class="btn btn-light" href="/dashboard/export/?exp=search&q={{aQuery}}">Export from Search </a>
+ <button class="btn btn-light" onclick="deleteProduct('search','{{aQuery}}')">Delete from Search</button>
+</div>
+ 
+ {% comment %} <button class="btn btn-light" onclick="removeAllFromSearch()">Export Products from Search</button> {% endcomment %}
+    
+    {% for product in results %}
+       
+        {% comment %} <li>{{ product.id }}</li>
+        <li>{{ product.productID}}</li>
+         <li>{{ product.productTitle }}</li>
+         <li>{{ product.searchUrl }}</li>
+         <li>{{ product.price }}</li>
+         <li>{{ product.shortDescription }}</li>
+         <li>{{ product.description }}</li>
+         <li>{{ product.productImage }}</li>
+         <li>{{ product.esUrl }}</li>
+         <li>{{ product.pniUrl }}</li>
+         <li>{{ product.tabData }}</li>
+         <li>{{ product.additional1 }}</li>
+         <li>{{ product.additional2 }}</li>
+         <li>{{ product.additional3 }}</li> {% endcomment %}
+        
+          <div class="product" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <div class="photo">
+            <a href="/{{ product.searchUrl }}" class="url">
+                <img itemprop="image" alt="{{ product.productTitle }}" src="{{ product.productImage }}"></a>
+
+        </div>
+        <div class="content">
+            <h2 class="title"><a href="/{{ product.searchUrl }}" class="url">{{ product.productTitle }}</a></h2>
+     
+           
+            <p itemprop="description" class="description"> {{ product.shortDescription }}</p>
+               <div class='price'><strong> Price: </strong> ${{ product.price }}  </div>
+               <div class='price'><strong> Product Code: </strong> {{ product.productID }}  </div>
+               
+                <a href="/{{product.searchUrl}}" class="btn btn-default"> Details </a> 
+            </div> 
+         
+        <button class="btn btn-danger" onclick="deleteProduct('each','{{product.productID}}')">Delete </button>
+        <meta itemprop="position" content="{{ product.id }}">
+    </div>
+
+    {% empty %}
+        <div class="results-empty">No results found. </div>
+    {% endfor %}
+    
+ 
+</div>
+{% endblock %}
+
+ 

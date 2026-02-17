@@ -1,0 +1,112 @@
+{% load data_load %}
+{% load static %}
+{% block header %}
+ 
+
+
+    <header id="header">
+        <div class="header-top">
+        <a class="head-top-logo" href="/"><img src="/static/images/logo.png" alt="Brand Logo"></a>
+        <div class="nav-search search-suggestion-wrapper">
+         <form name="wmsBasicSearch" method="GET" action="{% url 'search_results' %}">
+    <input type="search" name="q" placeholder="Search..." class="nav-search-input" value="{{ query }}">
+  <input  class="nav-search-submit" type="submit">
+</form>  
+           {% comment %} <form name="wmsBasicSearch" action="http://elementsearch.com/search/do/execute-search" method="get" enctype="application/x-www-form-urlencoded">
+				  <input type="search" name="wmsSearchQuery" autocomplete="off" class="nav-search-input">
+				  <input name="btnWmsBasicSearch" class="nav-search-submit" type="submit">
+			</form>   {% endcomment %}
+        </div>
+        <div class="head-top-right">
+            {% if user.is_authenticated %} 
+            <div class="admin-nav">
+            <a class="top-right-login" href="/dashboard/logout">Logout</a>
+            <a class="top-right-login" href="/dashboard/">Dashboard</a>
+            <a class="top-right-login" href="/admin/">Supper Admin</a>
+            <a class="top-right-login" href="/dashboard/product-upload">Product Upload</a>
+            </div>
+            {% else %}
+            <div class="welcome">
+                <span class="account-link"><a href="https://www.elementsearch.com/user" class="my-account"> My Account</a> |
+					<a href="https://www.elementsearch.com/order/track" class="track-order"> Track Order</a></span>
+                <span class="hello">Hello Guest</span> 
+                <a class="top-right-login" href="/dashboard/login"> Login</a>
+                  
+			</div>
+            <div id="top-cart">
+                <a href="https://www.elementsearch.com/cart">
+                <img
+                src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAACEAAAAeCAYAAACiyHcXAAABb0lEQVRIiWP4//8/w0DjAXcAdkccVJDCwHR1xEEFPSD+CcT%20/kfBFIJahpyNuozkAhlvp6YilOByxHxo1cuBQIQ5LodEScDMIOAKk2AyIrYC4GYeDKMVLic8dBxV0aOSI36Q4QopGjvhOqiNe08ARR4l3BMQhG6keFQcV7Eh1BLUTJ0YoEOMIKyo6AFQIOpHjCDlahwIxjgAlzqdUcMBnIHYgzxEQh2xGMgyUWyYCcT8S7iXABtEexBfbhBPnc4LqycDEOMIGyREf/9OgRiXGEegl51JolPTiiJpeLGJhlDoCVKm9pDh7UuQIiEMoLTkxKi1yHKHwH9KmuPkf0vC5jca+i0UMGfdS7ggaY+IVQxKo139YGxS3OnUgfohXDQWOkEGL579AXIZF3UOM3ERFR0hgSXArsaj7hKbmMLVD4iOaBUVY1B1FUzOFeo6AWKACTe3fgbjmP7aO0UEFYSDeBU07U4CYm7qOoBEecAeAMAChHhoD+2TzkgAAAABJRU5ErkJggg==" alt="shopping icon"></a>
+			</div>
+             
+            {% endif %} 
+        </div>        
+        <div class="menu-icon">
+            <div class="hamburger hamburger_type-default centered">
+                <div class="hamburger__bar"></div>
+                <div class="hamburger__bar"></div>
+                <div class="hamburger__bar"></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="nav-wrap">
+    <ul id="nav" class="main-menu l1 l1-ul">
+        <li class="l1 l1-li"><a href="/">Home</a></li>
+        <li class="l1 l1-li">
+            <a href="/all-products">Products</a>
+            {% comment %} <ul class="l2 l2-ul">
+                <li class="l2 l2-li"><a href="/category/gf-signet-flow-sensors">Flow Sensors</a></li>
+                <li class="l2 l2-li"><a href="/category/ph-orp-sensors">ph-ORP Sensors & Electrodes</a></li>
+                <li class="l2 l2-li"><a href="/category/flow-instruments">Flow Monitor Controller / Transmitter</a></li>
+                <li class="l2 l2-li"><a href="/category/conductivity-resistivity-electrode">Conductivity Resistivity
+                    Sensors</a></li>
+                <li class="l2 l2-li"><a href="ultrasonic-flow">Ultrasonic Flow</a></li>
+                <li class="l2 l2-li"><a href="level-sensor">Level Sensor</a></li>
+                <li class="l2 l2-li"><a href="http://www.pumpsandinstrumentations.com/search/fittings?brands=2">Installation
+                    Fittings</a></li>
+            </ul> {% endcomment %}
+            <ul class="l2 l2-ul">
+        {% for item in navRoot_load|navRoot:'root' %}
+            <li><a href="/category/{{item.url}}">{{item.title}}</a> 
+                <ul class="category-list l2">
+                {% for sub in navRoot_load|navRoot:item.textId %}
+                    <li><a href="/category/{{sub.url}}">{{sub.title}}</a>
+                        <ul class="category-list l3">
+                            {% for sub2 in navRoot_load|navRoot:sub.textId %}
+                                <li><a href="/category/{{sub2.url}}">{{sub2.title}}</a></li>
+                            {%endfor%}
+                        </ul>
+                    </li>
+                {%endfor%}
+                </ul>
+            </li>
+        {%endfor%}
+        </ul>
+
+        </li> 
+        <li class="l1 l1-li"><a href="https://www.elementsearch.com/support/about-us">About</a></li>
+        <li class="l1 l1-li"><a href="http://www.elementsearch.com/support/contact">Contact Us</a></li>
+    </ul>
+    
+{% comment %} <ul class="category-list l1">
+{% for item in navRoot_load|navRoot:'root' %}
+    <li><a href="/category/{{item.url}}">{{item.title}}</a> 
+        <ul class="category-list l2">
+        {% for sub in navRoot_load|navRoot:item.textId %}
+            <li><a href="/category/{{sub.url}}">{{sub.title}}</a>
+                <ul class="category-list l3">
+                    {% for sub2 in navRoot_load|navRoot:sub.textId %}
+                        <li><a href="/category/{{sub2.url}}">{{sub2.title}}</a></li>
+                    {%endfor%}
+                </ul>
+            </li>
+        {%endfor%}
+        </ul>
+    </li>
+{%endfor%}
+</ul> {% endcomment %}
+</div>    
+
+
+{% endblock %}

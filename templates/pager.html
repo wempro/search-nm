@@ -1,0 +1,65 @@
+{% load static %}
+ <div class="pagination">
+    {% with start=items.start_index end=items.end_index total=items.paginator.count %}
+   <span class="count-container" style="border: none;">Results: <strong>{{ start }} – {{ end }}</strong> of   {{ total }}</span>
+{% endwith %}
+
+    {% with total=items.paginator.num_pages current=items.number %}
+
+    {# First + Previous #}
+    {% if items.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{ items.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {# Page number window logic #}
+    {% for num in items.paginator.page_range %}
+        {% if total <= 10 %}
+            {# small page count #}
+            {% if num == current %}
+                <span class="current">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+
+        {% else %}
+            {# big page count #}
+
+            {% if current <= 3 %}
+                {% if num <= 5 %}
+                    {% if num == current %}
+                        <span class="current">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endif %}
+
+            {% elif current >= total|add:'-2' %}
+                {% if num >= total|add:'-4' %}
+                    {% if num == current %}
+                        <span class="current">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endif %}
+
+            {% else %}
+                {% if num >= current|add:'-2' and num <= current|add:'2' %}
+                    {% if num == current %}
+                        <span class="current">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {# Next + Last #}
+    {% if items.has_next %}
+        <a href="?page={{ items.next_page_number }}">Next</a>
+        <a href="?page={{ total }}">Last</a>
+    {% endif %}
+
+    {% endwith %}
+</div>

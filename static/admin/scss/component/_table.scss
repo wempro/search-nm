@@ -1,0 +1,17 @@
+table {
+  // border: solid 1px #fff;
+  color: #fff;
+  td,
+  th {
+    border-bottom: solid 1px #3d4050;
+  }
+  width: 100%;
+  td {
+    padding: 20px 15px;
+  }
+  th {
+    font-weight: bold;
+    padding: 15px;
+    text-align: left;
+  }
+}

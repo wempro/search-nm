@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} About || Wempro {% endblock %}
+{% block style %} <style>
+input, textarea, select {
+    margin: 10px 0;
+}
+</style>{% endblock %}
+{% block script %}<script>
+  
+</script> {% endblock %}
+{% block content %}
+
+<div class="container mt-3">
+  {% for obj in data %}
+    {{obj.textId}}
+  {% endfor%}
+
+ 
+{% comment %} <form enctype="multipart/form-data" class=""> {% endcomment %}
+<h2> add service Title </h2>
+     <form method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+    <input name="title" placeholder="Title" type="text" class="form-control" value="">
+    <div class="form-check form-switch">
+
+        <input name="isCustomizable" type="checkbox" id="isCustomizable" class="form-check-input" value="false"><label
+            title="" for="isCustomizable" class="form-check-label">Is Customizable</label></div>
+
+    <input name="basePrice" placeholder="Base Price" type="number" class="form-control" value="0">
+
+    <textarea name="optionJson" placeholder="Option Json" type="text" class="form-control"></textarea>
+
+  
+ <select
+        aria-label="Default select example" name="status" class="form-control form-select">
+    <option value=""> Category visibility</option>
+    <option value="Y">Show</option>
+    <option value="N">Hide</option>
+</select>
+
+    <input name="image" type="file" class="form-control">
+    <p class="red">Please select a Category Image</p>
+
+    <input name="hourNeeded" placeholder="Hour Needed" type="number" class="form-control" value="0">
+    <button type="submit" class="mt-2 btn btn-primary"> Submit</button>
+</form>
+</div>
+{% endblock %}

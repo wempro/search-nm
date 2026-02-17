@@ -1,0 +1,16 @@
+    <div class="breadcrumb">
+        <a href="/" class="home">Home</a> 
+        
+       {% for item in breadcrumb %}
+            <b> » </b>
+            {% if forloop.last %}
+                <strong class="current-page">{{ item.name }}</strong>  
+            {% else %}
+                <a itemprop="url" href="{{ item.link }}">
+                    {{ item.name }}  
+                </a>
+            {% endif %}
+
+        {% endfor %}
+
+    </div>

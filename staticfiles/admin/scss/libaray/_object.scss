@@ -1,0 +1,92 @@
+%topic-section {
+  /* .topic-section object use only two column object [width=20%] and [width=80%]  */
+  background: #ffffff;
+  //overflow: auto;
+  //padding: 10px 20px;
+  margin-bottom: 5px;
+  margin-top: 3px;
+
+  .product-section {
+    width:calc(100% - 220px);
+    float: right;
+    @include media(tab){
+      width: 100%;
+    }
+  }
+}
+
+%title {
+  margin: 4px 0px 8px 0px;
+}
+
+%remove-btn {
+  font-family: 'Glyphicons Halflings';
+  font-size: 14px;
+  &:before {
+    content: "\e014";
+  }
+}
+
+%show {
+  display: block!important;
+}
+
+%hide {
+  display: none!important;
+}
+// invoice order history page each vendor btn
+%invoice-order-btn {
+  display: inline-block;
+  border: solid 1px;
+  background: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset;
+  border-radius: 2px;
+  color: $baseColor;
+  margin: 2px;
+  &:hover {
+    background: $baseColor;
+    color: #FFFFFF;
+    border-radius:2px;
+  }
+}
+%section-title {
+  margin: 10px;
+  position: relative;
+  font-size: 20px;
+  clear: both;
+}
+%section-title-full {
+  margin: 10px;
+  position: relative;
+  height: 40px;
+  font-size: 20px;
+  clear: both;
+
+  span, a {
+      top: 0px;
+      min-width: 300px;
+      text-align: center;
+      background: #edecec;
+      color: #666;
+      display: inline-block;
+      padding: 8px;
+      z-index: 2;
+      position: absolute;
+      max-height: 100%;
+      overflow: hidden;
+      //line-height: 27px;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+
+   &:after {
+      content: "";
+      position: absolute;
+      width: 100%; top: 50%;
+      left: 0px;
+      height: 2px;
+      background: #edecec;
+      z-index: 1;
+    }
+}

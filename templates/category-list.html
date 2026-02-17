@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{meta_data.seoTitle}}</title> 
+<meta name="description" content="{{meta_data.metaDescription}}">
+
+<link rel="canonical" href="/{{meta_data.canonicalUrl}}">
+{% endblock %}
+
+{% block style %}
+
+    <style>
+            
+            h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', Arial, sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        h1 {
+            width:100%;
+        }
+
+
+        /* Custome css */
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.428571429;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .product a.btn-default {
+            background: linear-gradient(#35aa51, #8fcb9d);
+            background-color: #8fcb9d;
+            color: #fff;
+            padding: 7px 12px;
+            margin-top:8px;
+        }
+        .product .title {
+            width: 100%;
+        }
+        .product .content {
+            float:none;
+            display:block;
+        }
+        .breadcrumb .query {
+            font-weight: bold;
+        }
+        .breadcrumb .query:after, .breadcrumb .query:before {
+        content: '"';
+        font-weight: normal;
+        }
+        .search-page {
+            width: calc(100% - 270px)
+
+        }
+        
+    </style>
+{% endblock %}
+{% block script %}
+<script>console.log('nur-----')</script> {% endblock %}
+
+{% comment %} {% load load_data %} {% endcomment %}
+
+
+{% block content %}
+<div class="search-page">
+ {% include 'breadcrumb.html' with breadcrumb=breadcrumb  %} 
+ 
+
+
+  
+    {% for item in items %} 
+        
+          <div class="product" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <div class="photo">
+            <a href="/category/{{ item.url|default:item.textId }}" class="url">
+                {% comment %} <img itemprop="image" alt="{{ item.title }}" src="/static/media/icon.png"> {% endcomment %}
+                 
+                    {% if item.img %}
+                        <img itemprop="image" alt="{{ item.title }}" src="{{ item.img }}">
+                    {% else %}
+                        <img itemprop="image" alt="{{ item.title }}" src="/media/category/brand-logo.jpg">
+                    {% endif %}
+                
+            </a>
+
+        </div>
+        <div class="content">
+             
+            
+            <h2 class="title"><a href="/category/{{ item.url|default:item.textId }}" class="url">{{ item.title }}</a></h2>
+     
+            {% if item.sub_title %}
+            <p itemprop="description" class="sub-title"> {{ item.sub_title }}</p>
+            {% else %}
+               <p itemprop="description" class="description"> {{ item.details|safe }}</p>
+            {% endif %} <br/>
+               
+                <a href="/category/{{ item.url|default:item.textId }}" class="btn btn-default"> Details </a> 
+            </div> 
+         
+        
+        <meta itemprop="position" content="{{ item.id }}">
+    </div>
+
+    {% empty %}
+        <div class="results-empty">No results found. </div>
+    {% endfor %}
+    
+ <!-- Display pagination controls -->
+    {% if items.paginator.num_pages > 1 %}
+        {% include 'pager.html' with items=items  %} 
+    {% endif %}
+
+ 
+</div>
+{% endblock %}
+
+ 

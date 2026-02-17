@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% block title %} About || Wempro {% endblock %}
+{% block style %} <style>
+
+</style>{% endblock %}
+{% block script %}<script>
+  
+</script> {% endblock %}
+
+
+{% block content %}
+<section class="courses-section section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="course-section-title text-center">
+                    <h2 class="title">Courses</h2>
+                    <p class="sub-title">Find the right courses for you</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+            <!-- course item -->
+             {% for item in data %}
+            <div class="item">
+                <div class="courses-item">
+                    <a href="{{ item.id }}" class="link course-item-inner">
+                        
+                            <div class="img-box">
+                                <img src="/media/{{item.thumImage}}" class="img-responsive" alt="" />
+                            </div>
+                            <h3 class="course-title">{{item.courseTitle}}</h3>
+                            <div class="instructor"> 
+                              <img src="static/images/team/team.jpg" alt="">
+                                <span class="instructor-name">{{item.courseInstructor}}</span>
+                            </div>
+                            <!-- <div class="price">BDT</div> -->
+                        
+                    </a>
+                </div>
+            </div> 
+            {% endfor %}
+        </div>
+    
+    </div>
+</section>
+{% endblock %}
+

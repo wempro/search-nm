@@ -1,0 +1,62 @@
+.service-sec {
+  background: #f7f7f7;
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.title {
+  text-align: center;
+}
+
+.title h1 {
+  color: #1a1919;
+
+}
+
+.services {
+  float: left;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  @include media(1024){
+    flex-wrap: wrap;
+  }
+
+  .service-box {
+    float: left;
+    width: 31%;
+    background: #fff;
+    border: 1px solid #848484;
+    padding: 20px 10px;
+    text-align: center;
+    color: #343737;
+    margin-right: 10px;
+    //min-height: 390px;
+    @include mediaMin(1024) {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    @include media(1024){
+     width: 100%;
+      margin: 10px;
+    }
+  }
+}
+
+
+.service-box:hover {
+  background: #006f65;
+  border: 1px solid #006f65;
+  color: #fff;
+}
+
+.service-box:hover p {
+  color: #fff;
+}
+
+.service-box h1 {
+  font-size: 19px;
+  margin: 10px;
+}
